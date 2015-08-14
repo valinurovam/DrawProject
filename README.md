@@ -40,6 +40,7 @@ CREATE TABLE `data_stats` (
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8
 ```
 
+## решение 1
 ```sql
 SELECT ds.type, ds.value
 FROM data_stats ds
@@ -48,4 +49,14 @@ INNER JOIN (
     FROM data_stats
     GROUP BY 1
     ) ds_tmp ON ds.`type` = ds_tmp.type AND ds.`date` = ds_tmp.date
+```
+## решение 2
+```sql
+SELECT TYPE, VALUE 
+FROM (
+    SELECT TYPE, VALUE, DATE
+    FROM data_stats
+    ORDER BY DATE DESC
+    ) ds_tmp
+GROUP BY 1
 ```
