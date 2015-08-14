@@ -1,0 +1,17 @@
+{
+  "name": "valinurovam/drawproject",
+  "description": "Yell Test First Task",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Valinurov Alexander",
+      "email": "valinurovam@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "models\\": "models/"
+    }
+  }
+}
