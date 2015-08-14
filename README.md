@@ -1,4 +1,3 @@
-# DrawProject
 #Задание 1
 Планировал изначально возможность добавлять "фильтры" (borderWidth, fillColor, borderColor,...) сделать через декораторы, но не до конца смог продумать в голове,
 как например реализовать подобные возможности  для библиотеки GD.
@@ -31,3 +30,22 @@ CREATE TABLE `book_author` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8
 ```
 #Задание 3
+```sql
+CREATE TABLE `data_stats` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `type` enum('photo','image','text','review') NOT NULL,
+  `date` date DEFAULT NULL,
+  `value` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8
+```
+
+```sql
+SELECT ds.type, ds.value
+FROM data_stats ds
+INNER JOIN (
+    SELECT TYPE, MAX(DATE) AS DATE
+    FROM data_stats
+    GROUP BY 1
+    ) ds_tmp ON ds.`type` = ds_tmp.type AND ds.`date` = ds_tmp.date
+```
